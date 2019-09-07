@@ -5,8 +5,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.where(id: params[:id]).first
-    render "items/show"
+    unless @item = Item.where(id: params[:id]).first
+      render plain: "404 Not Found", status: 404
+    end
   end
 
   def new
