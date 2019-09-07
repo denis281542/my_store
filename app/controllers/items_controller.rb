@@ -10,14 +10,23 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def edit
   end
 
   def create
-    render plain: params.inspect
-    #@item = Item.create(item_params)
-    #render plain: " #{@item.id}: #{@item.name} "
+    @item = Item.create(item_params)
+    if @item.errors.empty?
+    redirect_to item_path(@item)
+    else
+      render 'new'
+    end
   end
+
+  private
+    def item_params
+      params.require(:item).permit(:price, :name, :weight, :description)
+    end  
 end

@@ -1,6 +1,6 @@
 <h1>Create new Item</h1>
 
-<%= form_for Item.new do |f| %>
+<%= form_for @item do |f| %>
 
   <p>Цена: </br><%= f.text_field :price %> руб.</p> 
   <p>Название: </br><%= f.text_field :name %></p>
