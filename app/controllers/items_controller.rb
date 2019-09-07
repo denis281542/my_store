@@ -14,16 +14,28 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
+  #/items POST
   def create
     @item = Item.create(item_params)
     if @item.errors.empty?
-    redirect_to item_path(@item)
+    redirect_to item_path(@item) #/items/:id
+    else
+      render 'edit'
+    end
+  end
+
+    def update
+      @item = Item.find(params[:id])
+      @item.update_attributes(item_params)
+    if @item.errors.empty?
+    redirect_to item_path(@item) #/items/:id
     else
       render 'new'
     end
-  end
+    end
 
   private
     def item_params

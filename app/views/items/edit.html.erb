@@ -1,1 +1,12 @@
-<h1>Edit Item</h1>
+<h1>Edit new Item</h1>
+
+<%= form_for @item do |f| %>
+
+  <p>Цена: </br><%= f.text_field :price %> руб.</p> 
+  <p>Название: </br><%= f.text_field :name %></p>
+  <p>Вес: </br><%= f.text_field :weight %></p>
+  <p>Описание: </br><%= f.text_field :description %></p>
+
+  <p><%= f.submit "Изменить товар" %></p>
+
+<% end %>
