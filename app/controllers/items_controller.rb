@@ -16,7 +16,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
-    render plain: " #{@item.id}: #{@item.name} "
+    render plain: params.inspect
+    #@item = Item.create(item_params)
+    #render plain: " #{@item.id}: #{@item.name} "
   end
 end
