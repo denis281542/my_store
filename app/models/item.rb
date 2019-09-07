@@ -1,3 +1,6 @@
 class Item < ApplicationRecord
-  validates :price, { numbericality: {greater_then: 0, allow_nil: true} }
+  #attr_accessible :price, :name, :real, :description, :weight
+
+  #validates :price,  numericality: {greater_then: 0, allow_nil: true} 
+  #validates :name, :description, presence: true
 end
