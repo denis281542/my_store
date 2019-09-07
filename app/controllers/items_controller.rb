@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
-    render inline: @items.map { |i| "#{i.name}: #{i.price}" }.join("</br>")
   end
 
   def show
