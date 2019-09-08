@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  
   def index
     @items = Item.all
   end
@@ -30,12 +31,21 @@ class ItemsController < ApplicationController
     def update
       @item = Item.find(params[:id])
       @item.update_attributes(item_params)
-    if @item.errors.empty?
-    redirect_to item_path(@item) #/items/:id
-    else
-      render 'new'
+      if @item.errors.empty?
+      redirect_to item_path(@item) #/items/:id
+      else
+        render 'new'
+      end
     end
+
+    def destroy
+      @item = Item.find(params[:id])
+      @item.destroy
+
+      redirect_to action: "index"
     end
+
+
 
   private
     def item_params
