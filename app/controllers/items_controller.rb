@@ -7,6 +7,11 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def expensive
+    @items = Item.where("price > 1000")
+    render "index"
+  end
+
   def show
     unless @item 
       render plain: "404 Not Found", status: 404
