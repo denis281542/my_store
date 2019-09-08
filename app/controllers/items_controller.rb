@@ -1,11 +1,13 @@
 class ItemsController < ApplicationController
   
+  before_action :find_item, only: [:show, :edit, :update, :destroy]
+
   def index
     @items = Item.all
   end
 
   def show
-    unless @item = Item.where(id: params[:id]).first
+    unless @item 
       render plain: "404 Not Found", status: 404
     end
   end
@@ -15,7 +17,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   #/items POST
@@ -29,7 +30,6 @@ class ItemsController < ApplicationController
   end
 
     def update
-      @item = Item.find(params[:id])
       @item.update_attributes(item_params)
       if @item.errors.empty?
       redirect_to item_path(@item) #/items/:id
@@ -39,7 +39,6 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-      @item = Item.find(params[:id])
       @item.destroy
 
       redirect_to action: "index"
@@ -51,4 +50,8 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:price, :name, :weight, :description)
     end  
+
+    def find_item
+      @item = Item.find(params[:id])
+    end
 end
