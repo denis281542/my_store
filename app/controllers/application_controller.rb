@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  private
+
   def render_403
     render file: "public/403.html", status: 403
   end
