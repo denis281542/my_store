@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_09_13_151945) do
 
-  create_table "cards_items", force: :cascade do |t|
+  create_table "cards_items", id: false, force: :cascade do |t|
     t.integer "cart_id"
     t.integer "item_id"
   end
