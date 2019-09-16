@@ -3,6 +3,5 @@ class Cart < ApplicationRecord
   belongs_to :user
   has_many   :positions
   has_many   :items, through: :positions
-  1
 
 end
